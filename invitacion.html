@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Misa de Acción de Gracias</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background: linear-gradient(135deg, #1a4d2e 0%, #4f8a6b 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .invitacion {
+            background: linear-gradient(135deg, #f5f9f6 0%, #e8f4ed 50%, #f0f8f3 100%);
+            max-width: 600px;
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .border-decorativo {
+            border: 3px solid #d4af37;
+            border-radius: 15px;
+            padding: 30px;
+            background: linear-gradient(135deg, #fdfcf8 0%, #f9f5ec 100%);
+            position: relative;
+        }
+
+        .border-decorativo::before,
+        .border-decorativo::after {
+            content: '';
+            position: absolute;
+            background: #d4af37;
+        }
+
+        .border-decorativo::before {
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            height: 1px;
+        }
+
+        .border-decorativo::after {
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            height: 1px;
+        }
+
+        .linea-vertical-izq,
+        .linea-vertical-der {
+            position: absolute;
+            width: 1px;
+            background: #d4af37;
+            top: 15px;
+            bottom: 15px;
+        }
+
+        .linea-vertical-izq {
+            left: 15px;
+        }
+
+        .linea-vertical-der {
+            right: 15px;
+        }
+
+        .contenido {
+            background: linear-gradient(135deg, #faf8f3 0%, #f5f0e8 50%, #f8f4ed 100%);
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .esquina {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            opacity: 0.3;
+        }
+
+        .esquina-tl {
+            top: 35px;
+            left: 35px;
+            border-top: 3px solid #d4af37;
+            border-left: 3px solid #d4af37;
+        }
+
+        .esquina-tr {
+            top: 35px;
+            right: 35px;
+            border-top: 3px solid #d4af37;
+            border-right: 3px solid #d4af37;
+        }
+
+        .esquina-bl {
+            bottom: 35px;
+            left: 35px;
+            border-bottom: 3px solid #d4af37;
+            border-left: 3px solid #d4af37;
+        }
+
+        .esquina-br {
+            bottom: 35px;
+            right: 35px;
+            border-bottom: 3px solid #d4af37;
+            border-right: 3px solid #d4af37;
+        }
+
+        .imagen-virgen {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .imagen-virgen img {
+            width: 150px;
+            height: auto;
+            filter: drop-shadow(0 5px 15px rgba(26, 77, 46, 0.3));
+        }
+
+        .cruz {
+            text-align: center;
+            color: #d4af37;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #1a4d2e;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .subtitulo {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4f8a6b;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 20px auto;
+        }
+
+        .detalles {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .detalle-item {
+            margin: 20px 0;
+        }
+
+        .detalle-label {
+            color: #1a4d2e;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .detalle-texto {
+            color: #4f8a6b;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .mensaje-final {
+            text-align: center;
+            color: #1a4d2e;
+            font-style: italic;
+            margin-top: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .flores {
+            text-align: center;
+            font-size: 24px;
+            color: #d4af37;
+            margin: 20px 0;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            body {
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .invitacion {
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 170mm !important;
+                margin: 0 auto !important;
+                page-break-inside: avoid;
+                background: linear-gradient(135deg, #f5f9f6 0%, #e8f4ed 50%, #f0f8f3 100%) !important;
+            }
+
+            .border-decorativo {
+                border: 3px solid #d4af37 !important;
+                background: linear-gradient(135deg, #fdfcf8 0%, #f9f5ec 100%) !important;
+            }
+
+            .contenido {
+                background: linear-gradient(135deg, #faf8f3 0%, #f5f0e8 50%, #f8f4ed 100%) !important;
+            }
+
+            .boton-descargar {
+                display: none !important;
+            }
+        }
+
+        .boton-descargar {
+            text-align: center;
+            margin-top: 30px;
+            padding-bottom: 20px;
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #1a4d2e 0%, #4f8a6b 100%);
+            color: white;
+            border: 2px solid #d4af37;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(26, 77, 46, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-pdf:hover {
+            background: linear-gradient(135deg, #4f8a6b 0%, #1a4d2e 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 77, 46, 0.4);
+        }
+
+        .btn-pdf:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="invitacion" id="invitacion">
+        <div class="border-decorativo">
+            <div class="linea-vertical-izq"></div>
+            <div class="linea-vertical-der"></div>
+            <div class="esquina esquina-tl"></div>
+            <div class="esquina esquina-tr"></div>
+            <div class="esquina esquina-bl"></div>
+            <div class="esquina esquina-br"></div>
+            
+            <div class="contenido">
+                <div class="cruz">✟</div>
+                
+                <div class="imagen-virgen">
+                    <img src="virgen.jpg" alt="Virgen de Guadalupe" width="150">
+                </div>
+
+                <h1>Misa de Acción de Gracias<br>a la Virgen de Guadalupe</h1>
+                
+                <div class="subtitulo">Familia Pérez Torrijos</div>
+                
+                <div class="divider"></div>
+                
+                
+                <div class="detalles">
+                    <div class="detalle-item">
+                        <span class="detalle-label">Fecha</span>
+                        <p class="detalle-texto">Sábado, 27 de diciembre de 2025</p>
+                    </div>
+                    
+                    <div class="detalle-item">
+                        <span class="detalle-label">Lugar</span>
+                        <p class="detalle-texto">Casa del Sr. Tobías Pérez</p>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+
+                
+                <p class="mensaje-final">
+                    Con el corazón lleno de gratitud,<br>
+                    les invitamos a unirse en oración<br>
+                    y celebración en honor a<br>
+                    Nuestra Señora de Guadalupe
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
